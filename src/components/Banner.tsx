@@ -18,7 +18,7 @@ export const Banner = () => {
   }, []);
 
   return (
-    <div className="bg-primary text-white py-4 overflow-hidden">
+    <div className="bg-secondary text-white py-4 overflow-hidden">
       <div className="banner-slide">
         <h2 className="text-2xl font-bold text-center">
           {bannerMessages[currentMessage]}

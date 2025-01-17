@@ -7,11 +7,10 @@ export const ContactForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Message sent successfully!");
-    // Here you would typically send the form data to your backend
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-md">
       <div>
         <Input placeholder="Full Name" required />
       </div>
@@ -24,7 +23,7 @@ export const ContactForm = () => {
       <div>
         <Textarea placeholder="Your Message" required />
       </div>
-      <Button type="submit" className="w-full">Send Message</Button>
+      <Button type="submit" className="w-full bg-secondary hover:bg-secondary/90">Send Message</Button>
     </form>
   );
 };
