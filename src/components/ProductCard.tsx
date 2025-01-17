@@ -54,12 +54,12 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
           <DialogTrigger asChild>
             <Button variant="outline" className="w-full">Get Quote</Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
+          <DialogContent className="sm:max-w-[425px] max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>Request Quote</DialogTitle>
             </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
+            <form onSubmit={handleSubmit} className="grid gap-3">
+              <div>
                 <Label htmlFor="fullName">Full Name</Label>
                 <Input
                   id="fullName"
@@ -68,7 +68,7 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
                   onChange={(e) => setFormData({...formData, fullName: e.target.value})}
                 />
               </div>
-              <div className="space-y-2">
+              <div>
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
@@ -78,7 +78,7 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                 />
               </div>
-              <div className="space-y-2">
+              <div>
                 <Label htmlFor="mobile">Mobile Number</Label>
                 <Input
                   id="mobile"
@@ -87,7 +87,7 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
                   onChange={(e) => setFormData({...formData, mobile: e.target.value})}
                 />
               </div>
-              <div className="space-y-2">
+              <div>
                 <Label htmlFor="brand">Cement Brand</Label>
                 <Select
                   value={formData.brand}
@@ -105,8 +105,8 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
                   </SelectContent>
                 </Select>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
                   <Label htmlFor="city">City</Label>
                   <Input
                     id="city"
@@ -115,7 +115,7 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
                     onChange={(e) => setFormData({...formData, city: e.target.value})}
                   />
                 </div>
-                <div className="space-y-2">
+                <div>
                   <Label htmlFor="state">State</Label>
                   <Input
                     id="state"
@@ -125,7 +125,7 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
                   />
                 </div>
               </div>
-              <div className="space-y-2">
+              <div>
                 <Label htmlFor="pinCode">PIN Code</Label>
                 <Input
                   id="pinCode"
@@ -134,7 +134,7 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
                   onChange={(e) => setFormData({...formData, pinCode: e.target.value})}
                 />
               </div>
-              <div className="space-y-2">
+              <div>
                 <Label htmlFor="address">Address</Label>
                 <Input
                   id="address"
@@ -143,7 +143,7 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
                   onChange={(e) => setFormData({...formData, address: e.target.value})}
                 />
               </div>
-              <Button type="submit" className="w-full">Submit Quote Request</Button>
+              <Button type="submit" className="w-full mt-2">Submit Quote Request</Button>
             </form>
           </DialogContent>
         </Dialog>
