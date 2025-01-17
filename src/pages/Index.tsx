@@ -7,49 +7,49 @@ const products = [
   {
     name: "Ambuja Cement PPC",
     price: 350,
-    image: "/lovable-uploads/0786dc0d-ea55-4dbc-af9f-a7041c7210d7.png",
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
     brand: "Ambuja"
   },
   {
     name: "ACC Gold PPC",
     price: 360,
-    image: "/lovable-uploads/0786dc0d-ea55-4dbc-af9f-a7041c7210d7.png",
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
     brand: "ACC"
   },
   {
     name: "Ultratech PPC",
     price: 355,
-    image: "/lovable-uploads/0786dc0d-ea55-4dbc-af9f-a7041c7210d7.png",
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
     brand: "Ultratech"
   },
   {
     name: "JK Super PPC",
     price: 345,
-    image: "/lovable-uploads/0786dc0d-ea55-4dbc-af9f-a7041c7210d7.png",
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
     brand: "JK"
   },
   {
     name: "Dalmia DSP PPC",
     price: 340,
-    image: "/lovable-uploads/0786dc0d-ea55-4dbc-af9f-a7041c7210d7.png",
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
     brand: "Dalmia"
   },
   {
     name: "ACC F2R",
     price: 365,
-    image: "/lovable-uploads/0786dc0d-ea55-4dbc-af9f-a7041c7210d7.png",
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
     brand: "ACC"
   },
   {
     name: "Ultratech Super",
     price: 370,
-    image: "/lovable-uploads/0786dc0d-ea55-4dbc-af9f-a7041c7210d7.png",
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
     brand: "Ultratech"
   },
   {
     name: "JK Cement Pro",
     price: 355,
-    image: "/lovable-uploads/0786dc0d-ea55-4dbc-af9f-a7041c7210d7.png",
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
     brand: "JK"
   }
 ];
