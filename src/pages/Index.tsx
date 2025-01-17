@@ -106,22 +106,13 @@ const Index = () => {
       <section id="about" className="py-12 px-4 bg-white">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-center mb-8">About Us</h2>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-4">
-              <p className="text-gray-600">
-                We are one of India's leading cement suppliers, offering premium quality cement products from top brands. With years of experience in the industry, we ensure reliable supply and competitive pricing for all your construction needs.
-              </p>
-              <p className="text-gray-600">
-                Our commitment to excellence and customer satisfaction has made us a trusted name in the cement industry. We specialize in bulk orders and provide pan-India delivery services.
-              </p>
-            </div>
-            <div className="rounded-lg overflow-hidden shadow-lg">
-              <img 
-                src="/lovable-uploads/0786dc0d-ea55-4dbc-af9f-a7041c7210d7.png" 
-                alt="Cement Factory" 
-                className="w-full h-auto"
-              />
-            </div>
+          <div className="space-y-4">
+            <p className="text-gray-600">
+              We are one of India's leading cement suppliers, offering premium quality cement products from top brands. With years of experience in the industry, we ensure reliable supply and competitive pricing for all your construction needs.
+            </p>
+            <p className="text-gray-600">
+              Our commitment to excellence and customer satisfaction has made us a trusted name in the cement industry. We specialize in bulk orders and provide pan-India delivery services.
+            </p>
           </div>
         </div>
       </section>
