@@ -87,16 +87,26 @@ const Index = () => {
               <a href="#about" className="hover:text-gray-200">About Us</a>
               <a href="#contact" className="hover:text-gray-200">Contact</a>
             </div>
-            <div className="flex items-center space-x-4">
-              <a href="tel:18001218860" className="flex items-center space-x-2 hover:text-gray-200">
-                <Phone size={20} />
-                <span>1800 121 8860</span>
-              </a>
-              <a href="mailto:info@alpha-cement.com" className="flex items-center space-x-2 hover:text-gray-200">
-                <Mail size={20} />
-                <span>info@alpha-cement.com</span>
-              </a>
-            </div>
+            <ul className="flex items-center space-x-4">
+              <li>
+                <a 
+                  href="tel:18001218860" 
+                  className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-white/10 transition-colors"
+                >
+                  <Phone className="h-4 w-4" />
+                  <span className="text-sm">18001218860</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="mailto:info@alpha-cement.com" 
+                  className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-white/10 transition-colors"
+                >
+                  <Mail className="h-4 w-4" />
+                  <span className="text-sm">info@alpha-cement.com</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
