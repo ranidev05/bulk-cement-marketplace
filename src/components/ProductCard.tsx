@@ -20,12 +20,17 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 flex flex-col">
+    <div className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
       <img src={image} alt={name} className="w-full h-48 object-contain mb-4" />
-      <h3 className="text-lg font-semibold mb-2">{name}</h3>
-      <p className="text-primary font-bold mb-4">₹{price}/bag</p>
-      <div className="mt-auto space-y-2">
-        <Button onClick={handleCall} className="w-full bg-secondary hover:bg-secondary/90">
+      <div className="text-center flex-grow">
+        <h3 className="text-lg font-semibold mb-2">{name}</h3>
+        <p className="text-primary font-bold mb-4">₹{price} / Bags</p>
+      </div>
+      <div className="w-full space-y-2">
+        <Button 
+          onClick={handleCall} 
+          className="w-full rounded-full bg-[#333333] hover:bg-[#222222] text-white"
+        >
           Call Now
         </Button>
         <QuoteDialog onSubmit={handleSubmit} />

@@ -16,7 +16,12 @@ export const QuoteDialog = ({ onSubmit }: QuoteDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="w-full">Get Quote</Button>
+        <Button 
+          variant="outline" 
+          className="w-full rounded-full bg-[#F97316] hover:bg-[#EA580C] text-white border-0"
+        >
+          Get Quote
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
