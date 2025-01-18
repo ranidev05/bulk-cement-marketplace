@@ -91,7 +91,7 @@ const Index = () => {
               <li>
                 <a 
                   href="tel:18001218860" 
-                  className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-white/10 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B5CF6] hover:bg-[#7C3AED] transition-colors"
                 >
                   <Phone className="h-4 w-4" />
                   <span className="text-sm">18001218860</span>
@@ -100,7 +100,7 @@ const Index = () => {
               <li>
                 <a 
                   href="mailto:info@alpha-cement.com" 
-                  className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-white/10 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#F97316] hover:bg-[#EA580C] transition-colors"
                 >
                   <Mail className="h-4 w-4" />
                   <span className="text-sm">info@alpha-cement.com</span>
