@@ -1,8 +1,9 @@
 import { Banner } from "@/components/Banner";
-import { ProductCard } from "@/components/ProductCard";
+import { Navigation } from "@/components/layout/Navigation";
+import { Footer } from "@/components/layout/Footer";
+import { ProductGrid } from "@/components/products/ProductGrid";
 import { Testimonial } from "@/components/Testimonial";
 import { ContactForm } from "@/components/ContactForm";
-import { Phone, Mail } from "lucide-react";
 
 const products = [
   {
@@ -76,41 +77,8 @@ const testimonials = [
 const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Navigation */}
-      <nav className="bg-primary text-white py-4">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Alpha Cements</h1>
-          <div className="flex items-center space-x-8">
-            <div className="hidden md:flex space-x-6">
-              <a href="#" className="hover:text-gray-200">Home</a>
-              <a href="#products" className="hover:text-gray-200">Products</a>
-              <a href="#about" className="hover:text-gray-200">About Us</a>
-              <a href="#contact" className="hover:text-gray-200">Contact</a>
-            </div>
-            <ul className="flex items-center space-x-4">
-              <li>
-                <a 
-                  href="tel:18001218860" 
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B5CF6] hover:bg-[#7C3AED] transition-colors"
-                >
-                  <Phone className="h-4 w-4" />
-                  <span className="text-sm">18001218860</span>
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="mailto:info@alpha-cement.com" 
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#F97316] hover:bg-[#EA580C] transition-colors"
-                >
-                  <Mail className="h-4 w-4" />
-                  <span className="text-sm">info@alpha-cement.com</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
+      <Navigation />
+      
       {/* Hero Banner Section */}
       <section className="relative h-[500px] bg-gradient-to-r from-primary to-secondary">
         <div className="container mx-auto px-4 h-full flex items-center">
@@ -141,27 +109,13 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Products Banner Section */}
-      <section className="py-12 bg-secondary/10">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold">Our Premium Products</h2>
-            <p className="mt-4 text-gray-600">Choose from our wide range of high-quality cement products</p>
-          </div>
-        </div>
-      </section>
-
       <Banner />
       
       {/* Products Section */}
       <section id="products" className="py-12 px-4">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-center mb-8">Our Products</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard key={product.name} {...product} />
-            ))}
-          </div>
+          <ProductGrid products={products} />
         </div>
       </section>
 
@@ -215,36 +169,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-primary text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Alpha Cements</h3>
-              <p className="text-sm">Your trusted partner for quality cement products.</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="hover:text-gray-300">Home</a></li>
-                <li><a href="#products" className="hover:text-gray-300">Products</a></li>
-                <li><a href="#about" className="hover:text-gray-300">About Us</a></li>
-                <li><a href="#contact" className="hover:text-gray-300">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Connect With Us</h3>
-              <div className="space-y-2">
-                <p>Phone: +91 9708976387</p>
-                <p>Email: info@alphacements.com</p>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-white/20 text-center">
-            <p>&copy; 2024 Alpha Cements. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
