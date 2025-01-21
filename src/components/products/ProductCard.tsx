@@ -1,6 +1,7 @@
 import { Button } from "../ui/button";
 import { QuoteDialog } from "../QuoteDialog";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   name: string;
@@ -10,6 +11,8 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => {
+  const navigate = useNavigate();
+  
   const handleCall = () => {
     window.location.href = "tel:+919708976387";
   };
@@ -19,11 +22,20 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
     toast.success("Quote request submitted successfully!");
   };
 
+  const handleViewDetail = () => {
+    navigate(`/product/${encodeURIComponent(name)}`);
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
-      <img src={image} alt={name} className="w-full h-48 object-contain mb-4" />
+      <img 
+        src={image} 
+        alt={name} 
+        className="w-full h-48 object-contain mb-4 cursor-pointer" 
+        onClick={handleViewDetail}
+      />
       <div className="text-center flex-grow">
-        <h3 className="text-lg font-semibold mb-2">{name}</h3>
+        <h3 className="text-lg font-semibold mb-2 cursor-pointer" onClick={handleViewDetail}>{name}</h3>
         <p className="text-primary font-bold mb-4">₹{price} / Bags</p>
       </div>
       <div className="w-full space-y-2">
@@ -34,6 +46,13 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
           Call Now
         </Button>
         <QuoteDialog onSubmit={handleSubmit} />
+        <Button
+          onClick={handleViewDetail}
+          variant="outline"
+          className="w-full rounded-full"
+        >
+          View Detail
+        </Button>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { ProductGrid } from "@/components/products/ProductGrid";
 import { Testimonial } from "@/components/Testimonial";
 import { ContactForm } from "@/components/ContactForm";
 
-const products = [
+export const products = [
   {
     name: "Ambuja Cement PPC",
     price: 350,
@@ -53,6 +53,30 @@ const products = [
     price: 355,
     image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
     brand: "JK"
+  },
+  {
+    name: "Ambuja Plus",
+    price: 358,
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
+    brand: "Ambuja"
+  },
+  {
+    name: "Dalmia Master",
+    price: 352,
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
+    brand: "Dalmia"
+  },
+  {
+    name: "ACC Premium",
+    price: 375,
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
+    brand: "ACC"
+  },
+  {
+    name: "Ultratech Master",
+    price: 368,
+    image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png",
+    brand: "Ultratech"
   }
 ];
 
@@ -175,3 +199,4 @@ const Index = () => {
 };
 
 export default Index;
+
