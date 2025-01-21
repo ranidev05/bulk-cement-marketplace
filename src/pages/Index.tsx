@@ -4,6 +4,8 @@ import { Footer } from "@/components/layout/Footer";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { Testimonial } from "@/components/Testimonial";
 import { ContactForm } from "@/components/ContactForm";
+import { Award, Truck, HeadsetIcon, Phone, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const products = [
   {
@@ -104,30 +106,41 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Banner Section */}
-      <section className="relative h-[500px] bg-gradient-to-r from-primary to-secondary">
-        <div className="container mx-auto px-4 h-full flex items-center">
-          <div className="text-white max-w-2xl">
-            <h1 className="text-5xl font-bold mb-4">Build the Strongest Future!</h1>
-            <p className="text-xl mb-8">Experience the power of premium quality cement for your construction needs.</p>
+      <section className="relative h-[600px] bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA]">
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="container mx-auto px-4 h-full flex items-center relative z-10">
+          <div className="text-white max-w-2xl animate-fade-in">
+            <h1 className="text-6xl font-bold mb-6 leading-tight">Build the Strongest Future!</h1>
+            <p className="text-xl mb-8 opacity-90">Experience the power of premium quality cement for your construction needs.</p>
+            <Button 
+              variant="secondary"
+              size="lg"
+              className="rounded-full text-lg px-8 py-6 hover:scale-105 transition-transform"
+            >
+              Explore Products
+            </Button>
           </div>
         </div>
       </section>
 
       {/* Features Banner Section */}
-      <section className="py-12 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-gray-50 rounded-lg">
+            <div className="text-center p-8 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+              <Award className="w-12 h-12 mx-auto mb-4 text-[#8B5CF6]" />
               <h3 className="text-xl font-semibold mb-4">Premium Quality</h3>
-              <p>Certified high-grade cement for lasting strength</p>
+              <p className="text-gray-600">Certified high-grade cement for lasting strength</p>
             </div>
-            <div className="text-center p-6 bg-gray-50 rounded-lg">
+            <div className="text-center p-8 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+              <Truck className="w-12 h-12 mx-auto mb-4 text-[#8B5CF6]" />
               <h3 className="text-xl font-semibold mb-4">Pan India Delivery</h3>
-              <p>Fast and reliable delivery across the country</p>
+              <p className="text-gray-600">Fast and reliable delivery across the country</p>
             </div>
-            <div className="text-center p-6 bg-gray-50 rounded-lg">
+            <div className="text-center p-8 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+              <HeadsetIcon className="w-12 h-12 mx-auto mb-4 text-[#8B5CF6]" />
               <h3 className="text-xl font-semibold mb-4">Expert Support</h3>
-              <p>24/7 technical assistance for your projects</p>
+              <p className="text-gray-600">24/7 technical assistance for your projects</p>
             </div>
           </div>
         </div>
@@ -196,24 +209,73 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-12 px-4 bg-white">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-8">Contact Us</h2>
-          <div className="grid md:grid-cols-2 gap-12">
+      {/* CTA Banner Section */}
+      <section className="py-12 bg-[#221F26] text-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
-              <ContactForm />
+              <h2 className="text-3xl font-bold mb-4">Ready to Place Your Order?</h2>
+              <p className="text-lg opacity-90">Get in touch with us for the best deals on bulk cement orders.</p>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Our Office</h3>
-              <div className="space-y-4 text-gray-600">
-                <p>123 Cement Street</p>
-                <p>Industrial Area, New Delhi</p>
-                <p>India - 110001</p>
-                <p>Phone: +91 9708976387</p>
-                <p>Email: info@alphacements.com</p>
+            <div className="flex gap-4">
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="rounded-full bg-[#8B5CF6] hover:bg-[#7C3AED] text-white border-0"
+              >
+                <Phone className="mr-2 h-5 w-5" />
+                Call Now
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="rounded-full bg-[#F97316] hover:bg-[#EA580C] text-white border-0"
+              >
+                Get Quote
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Contact Us</h2>
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold mb-6">Get in Touch</h3>
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="bg-primary/10 p-3 rounded-full">
+                    <Phone className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium">Phone</h4>
+                    <p className="text-gray-600">+91 9708976387</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="bg-primary/10 p-3 rounded-full">
+                    <Mail className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium">Email</h4>
+                    <p className="text-gray-600">info@alphacements.com</p>
+                  </div>
+                </div>
               </div>
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <h4 className="font-medium mb-2">Office Address</h4>
+                <p className="text-gray-600">
+                  123 Cement Street<br />
+                  Industrial Area, New Delhi<br />
+                  India - 110001
+                </p>
+              </div>
+            </div>
+            <div className="bg-gray-50 p-8 rounded-lg">
+              <ContactForm />
             </div>
           </div>
         </div>
