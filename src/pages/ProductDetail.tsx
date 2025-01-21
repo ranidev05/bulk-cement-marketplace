@@ -61,6 +61,30 @@ const ProductDetail = () => {
                       <p className="font-medium">Grade</p>
                       <p>43/53</p>
                     </div>
+                    <div>
+                      <p className="font-medium">Product Type</p>
+                      <p>Non Trade</p>
+                    </div>
+                    <div>
+                      <p className="font-medium">MOQ</p>
+                      <p>500</p>
+                    </div>
+                    <div>
+                      <p className="font-medium">Payment Terms</p>
+                      <p>Bank Transfer (RTGS, NEFT)</p>
+                    </div>
+                    <div>
+                      <p className="font-medium">Certified</p>
+                      <p>ISI Certified</p>
+                    </div>
+                    <div>
+                      <p className="font-medium">Application</p>
+                      <p>Construction Use</p>
+                    </div>
+                    <div>
+                      <p className="font-medium">Delivery Time</p>
+                      <p>2 - 3 Days</p>
+                    </div>
                   </div>
                 </div>
               </div>
