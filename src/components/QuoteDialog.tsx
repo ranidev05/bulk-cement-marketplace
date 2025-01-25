@@ -7,6 +7,7 @@ import {
 } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { QuoteForm } from "./QuoteForm";
+import { X } from "lucide-react";
 
 interface QuoteDialogProps {
   onSubmit: (e: React.FormEvent) => void;
@@ -23,9 +24,12 @@ export const QuoteDialog = ({ onSubmit }: QuoteDialogProps) => {
           Get Quote
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>Request Quote</DialogTitle>
+      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+        <DialogHeader className="bg-[#F97316] text-white p-4 rounded-t-lg relative">
+          <DialogTitle className="text-2xl">Get Quote</DialogTitle>
+          <Dialog.Close className="absolute right-4 top-4 rounded-full p-1 hover:bg-white/20">
+            <X className="h-5 w-5" />
+          </Dialog.Close>
         </DialogHeader>
         <QuoteForm onSubmit={onSubmit} />
       </DialogContent>
