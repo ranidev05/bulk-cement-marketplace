@@ -1,13 +1,19 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { products } from "./Index";
 import { X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { Testimonial } from "@/components/Testimonial";
 import { CTASection } from "@/components/sections/CTASection";
 import { ProductCard } from "@/components/ProductCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -16,7 +22,7 @@ const ProductDetail = () => {
 
   if (!product) return <div>Product not found</div>;
 
-  const bestSellingProducts = products.slice(0, 4); // Just taking first 4 products as example
+  const bestSellingProducts = products.slice(0, 4);
 
   const reviews = [
     {
@@ -140,14 +146,20 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        {/* Best Selling Products Section */}
-        <section className="mt-16">
+        {/* Best Selling Products Section with Carousel */}
+        <section className="mt-16 relative px-12">
           <h2 className="text-3xl font-bold text-center mb-8">Best Selling Products</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {bestSellingProducts.map((product) => (
-              <ProductCard key={product.name} {...product} />
-            ))}
-          </div>
+          <Carousel className="w-full">
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {bestSellingProducts.map((product) => (
+                <CarouselItem key={product.name} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4">
+                  <ProductCard {...product} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </section>
 
         {/* Best Reviews Section */}

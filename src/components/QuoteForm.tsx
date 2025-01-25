@@ -14,6 +14,7 @@ export const QuoteForm = ({ onSubmit }: QuoteFormProps) => {
     email: "",
     mobile: "",
     brand: "",
+    quantity: "",
     city: "",
     state: "",
     pinCode: "",
@@ -21,43 +22,60 @@ export const QuoteForm = ({ onSubmit }: QuoteFormProps) => {
   });
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-3">
-      <div>
-        <Label htmlFor="fullName">Full Name</Label>
+    <form onSubmit={onSubmit} className="grid gap-4 p-2">
+      <div className="space-y-2">
+        <Label htmlFor="fullName" className="text-sm font-medium text-gray-700">
+          Name <span className="text-red-500">*</span>
+        </Label>
         <Input
           id="fullName"
           required
+          placeholder="Enter your full name"
+          className="h-11 bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary"
           value={formData.fullName}
           onChange={(e) => setFormData({...formData, fullName: e.target.value})}
         />
       </div>
-      <div>
-        <Label htmlFor="email">Email</Label>
+
+      <div className="space-y-2">
+        <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+          Email <span className="text-red-500">*</span>
+        </Label>
         <Input
           id="email"
           type="email"
           required
+          placeholder="Enter your email"
+          className="h-11 bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary"
           value={formData.email}
           onChange={(e) => setFormData({...formData, email: e.target.value})}
         />
       </div>
-      <div>
-        <Label htmlFor="mobile">Mobile Number</Label>
+
+      <div className="space-y-2">
+        <Label htmlFor="mobile" className="text-sm font-medium text-gray-700">
+          Mobile Number <span className="text-red-500">*</span>
+        </Label>
         <Input
           id="mobile"
           required
+          placeholder="Enter your mobile number"
+          className="h-11 bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary"
           value={formData.mobile}
           onChange={(e) => setFormData({...formData, mobile: e.target.value})}
         />
       </div>
-      <div>
-        <Label htmlFor="brand">Cement Brand</Label>
+
+      <div className="space-y-2">
+        <Label htmlFor="brand" className="text-sm font-medium text-gray-700">
+          Cement Brand <span className="text-red-500">*</span>
+        </Label>
         <Select
           value={formData.brand}
           onValueChange={(value) => setFormData({...formData, brand: value})}
         >
-          <SelectTrigger>
-            <SelectValue placeholder="Select brand" />
+          <SelectTrigger className="h-11 bg-gray-50 border-gray-200">
+            <SelectValue placeholder="Select cement brand" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="ambuja">Ambuja Cement</SelectItem>
@@ -68,45 +86,84 @@ export const QuoteForm = ({ onSubmit }: QuoteFormProps) => {
           </SelectContent>
         </Select>
       </div>
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <Label htmlFor="city">City</Label>
+
+      <div className="space-y-2">
+        <Label htmlFor="quantity" className="text-sm font-medium text-gray-700">
+          Quantity <span className="text-red-500">*</span>
+        </Label>
+        <Input
+          id="quantity"
+          required
+          placeholder="Enter quantity needed"
+          className="h-11 bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary"
+          value={formData.quantity}
+          onChange={(e) => setFormData({...formData, quantity: e.target.value})}
+        />
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="city" className="text-sm font-medium text-gray-700">
+            City <span className="text-red-500">*</span>
+          </Label>
           <Input
             id="city"
             required
+            placeholder="Enter city"
+            className="h-11 bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary"
             value={formData.city}
             onChange={(e) => setFormData({...formData, city: e.target.value})}
           />
         </div>
-        <div>
-          <Label htmlFor="state">State</Label>
+        <div className="space-y-2">
+          <Label htmlFor="state" className="text-sm font-medium text-gray-700">
+            State <span className="text-red-500">*</span>
+          </Label>
           <Input
             id="state"
             required
+            placeholder="Enter state"
+            className="h-11 bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary"
             value={formData.state}
             onChange={(e) => setFormData({...formData, state: e.target.value})}
           />
         </div>
       </div>
-      <div>
-        <Label htmlFor="pinCode">PIN Code</Label>
+
+      <div className="space-y-2">
+        <Label htmlFor="pinCode" className="text-sm font-medium text-gray-700">
+          PIN Code <span className="text-red-500">*</span>
+        </Label>
         <Input
           id="pinCode"
           required
+          placeholder="Enter PIN code"
+          className="h-11 bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary"
           value={formData.pinCode}
           onChange={(e) => setFormData({...formData, pinCode: e.target.value})}
         />
       </div>
-      <div>
-        <Label htmlFor="address">Address</Label>
+
+      <div className="space-y-2">
+        <Label htmlFor="address" className="text-sm font-medium text-gray-700">
+          Address <span className="text-red-500">*</span>
+        </Label>
         <Input
           id="address"
           required
+          placeholder="Enter your address"
+          className="h-11 bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary"
           value={formData.address}
           onChange={(e) => setFormData({...formData, address: e.target.value})}
         />
       </div>
-      <Button type="submit" className="w-full mt-2">Submit Quote Request</Button>
+
+      <Button 
+        type="submit" 
+        className="w-full h-12 mt-4 bg-[#F97316] hover:bg-[#EA580C] text-white font-medium rounded-lg"
+      >
+        Get Quote
+      </Button>
     </form>
   );
 };
