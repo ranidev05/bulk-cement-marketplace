@@ -7,10 +7,16 @@ import { toast } from "sonner";
 
 interface OrderDetails {
   orderId: string;
-  status: "pending" | "shipped" | "success";
+  status: "created" | "pending" | "shipped" | "success";
+  paymentStatus: "holding" | "completed";
   date: string;
   product: string;
   quantity: number;
+  fullName: string;
+  mobileNumber: string;
+  invoiceNumber: string;
+  address: string;
+  pincode: string;
 }
 
 // Demo data
@@ -19,16 +25,28 @@ const demoOrders: Record<string, OrderDetails[]> = {
     {
       orderId: "ORD001",
       status: "shipped",
+      paymentStatus: "completed",
       date: "2024-02-20",
       product: "Dalmia DSP PPC",
-      quantity: 1000
+      quantity: 1000,
+      fullName: "Rajesh Kumar",
+      mobileNumber: "9876543210",
+      invoiceNumber: "INV001",
+      address: "123, Main Street, Sector 5",
+      pincode: "800001"
     },
     {
       orderId: "ORD002",
       status: "pending",
+      paymentStatus: "holding",
       date: "2024-02-22",
       product: "ACC Cement",
-      quantity: 500
+      quantity: 500,
+      fullName: "Amit Singh",
+      mobileNumber: "9876543210",
+      invoiceNumber: "INV002",
+      address: "456, Park Road, Sector 10",
+      pincode: "800002"
     }
   ]
 };
@@ -55,9 +73,18 @@ const OrderStatus = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
+      case "created": return "bg-blue-100 text-blue-800";
       case "pending": return "bg-yellow-100 text-yellow-800";
-      case "shipped": return "bg-blue-100 text-blue-800";
+      case "shipped": return "bg-purple-100 text-purple-800";
       case "success": return "bg-green-100 text-green-800";
+      default: return "bg-gray-100 text-gray-800";
+    }
+  };
+
+  const getPaymentStatusColor = (status: string) => {
+    switch (status) {
+      case "holding": return "bg-orange-100 text-orange-800";
+      case "completed": return "bg-green-100 text-green-800";
       default: return "bg-gray-100 text-gray-800";
     }
   };
@@ -69,7 +96,7 @@ const OrderStatus = () => {
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-center mb-8">Order Status</h1>
         
-        <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+        <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
           <div className="space-y-4">
             <div>
               <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">
@@ -89,20 +116,42 @@ const OrderStatus = () => {
             </div>
 
             {searched && orders.length > 0 && (
-              <div className="mt-6 space-y-4">
+              <div className="mt-6 space-y-6">
                 <h2 className="text-xl font-semibold">Your Orders</h2>
                 {orders.map((order) => (
-                  <div key={order.orderId} className="border rounded-lg p-4 space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Order ID: {order.orderId}</span>
-                      <span className={`px-3 py-1 rounded-full text-sm ${getStatusColor(order.status)}`}>
-                        {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
-                      </span>
+                  <div key={order.orderId} className="border rounded-lg p-6 space-y-4">
+                    <div className="flex flex-wrap gap-4 justify-between items-center">
+                      <div>
+                        <span className="font-medium">Order ID: {order.orderId}</span>
+                      </div>
+                      <div className="flex gap-2">
+                        <span className={`px-3 py-1 rounded-full text-sm ${getStatusColor(order.status)}`}>
+                          {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                        </span>
+                        <span className={`px-3 py-1 rounded-full text-sm ${getPaymentStatusColor(order.paymentStatus)}`}>
+                          Payment: {order.paymentStatus.charAt(0).toUpperCase() + order.paymentStatus.slice(1)}
+                        </span>
+                      </div>
                     </div>
-                    <div className="text-sm text-gray-600">
-                      <p>Date: {order.date}</p>
-                      <p>Product: {order.product}</p>
-                      <p>Quantity: {order.quantity} bags</p>
+                    
+                    <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
+                      <div>
+                        <p className="font-medium mb-1">Customer Details</p>
+                        <p>Full Name: {order.fullName}</p>
+                        <p>Mobile: {order.mobileNumber}</p>
+                        <p>Invoice Number: {order.invoiceNumber}</p>
+                      </div>
+                      <div>
+                        <p className="font-medium mb-1">Delivery Address</p>
+                        <p>{order.address}</p>
+                        <p>PIN Code: {order.pincode}</p>
+                      </div>
+                      <div>
+                        <p className="font-medium mb-1">Order Details</p>
+                        <p>Date: {order.date}</p>
+                        <p>Product: {order.product}</p>
+                        <p>Quantity: {order.quantity} bags</p>
+                      </div>
                     </div>
                   </div>
                 ))}
