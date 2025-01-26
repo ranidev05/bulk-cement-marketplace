@@ -89,6 +89,10 @@ const OrderStatus = () => {
     }
   };
 
+  const capitalizeFirstLetter = (str: string) => {
+    return str ? str.charAt(0).toUpperCase() + str.slice(1) : '';
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
@@ -126,10 +130,10 @@ const OrderStatus = () => {
                       </div>
                       <div className="flex gap-2">
                         <span className={`px-3 py-1 rounded-full text-sm ${getStatusColor(order.status)}`}>
-                          {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                          {capitalizeFirstLetter(order.status)}
                         </span>
                         <span className={`px-3 py-1 rounded-full text-sm ${getPaymentStatusColor(order.paymentStatus)}`}>
-                          Payment: {order.paymentStatus.charAt(0).toUpperCase() + order.paymentStatus.slice(1)}
+                          Payment: {capitalizeFirstLetter(order.paymentStatus)}
                         </span>
                       </div>
                     </div>
