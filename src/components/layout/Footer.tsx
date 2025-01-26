@@ -10,10 +10,11 @@ export const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-gray-300">Home</a></li>
-              <li><a href="#products" className="hover:text-gray-300">Products</a></li>
-              <li><a href="#about" className="hover:text-gray-300">About Us</a></li>
-              <li><a href="#contact" className="hover:text-gray-300">Contact</a></li>
+              <li><a href="/" className="hover:text-gray-300">Home</a></li>
+              <li><a href="/#products" className="hover:text-gray-300">Products</a></li>
+              <li><a href="/#about" className="hover:text-gray-300">About Us</a></li>
+              <li><a href="/#contact" className="hover:text-gray-300">Contact</a></li>
+              <li><a href="/order-status" className="hover:text-gray-300">Order Status</a></li>
             </ul>
           </div>
           <div>
