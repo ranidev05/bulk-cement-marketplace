@@ -4,6 +4,8 @@ import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 interface QuoteFormProps {
   onSubmit: (e: React.FormEvent) => void;
@@ -34,9 +36,43 @@ export const QuoteForm = ({ onSubmit }: QuoteFormProps) => {
     address: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(e);
+    
+    try {
+      const { error } = await supabase
+        .from('quotes')
+        .insert([{
+          full_name: formData.fullName,
+          email: formData.email,
+          mobile: formData.mobile,
+          brand: formData.brand,
+          quantity: formData.quantity,
+          city: formData.city,
+          state: formData.state,
+          pin_code: formData.pinCode,
+          address: formData.address
+        }]);
+
+      if (error) throw error;
+
+      toast.success("Quote request submitted successfully!");
+      setFormData({
+        fullName: "",
+        email: "",
+        mobile: "",
+        brand: "",
+        quantity: "",
+        city: "",
+        state: "",
+        pinCode: "",
+        address: "",
+      });
+      onSubmit(e);
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error("Failed to submit quote request. Please try again.");
+    }
   };
 
   return (

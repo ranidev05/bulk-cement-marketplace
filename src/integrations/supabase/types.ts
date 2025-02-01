@@ -9,7 +9,123 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      contacts: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          message: string
+          phone: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          message: string
+          phone: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string
+          phone?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          address: string
+          created_at: string
+          date: string
+          full_name: string
+          id: string
+          invoice_number: string
+          mobile_number: string
+          order_id: string
+          payment_status: string
+          pincode: string
+          product: string
+          quantity: number
+          status: string
+        }
+        Insert: {
+          address: string
+          created_at?: string
+          date?: string
+          full_name: string
+          id?: string
+          invoice_number: string
+          mobile_number: string
+          order_id: string
+          payment_status: string
+          pincode: string
+          product: string
+          quantity: number
+          status: string
+        }
+        Update: {
+          address?: string
+          created_at?: string
+          date?: string
+          full_name?: string
+          id?: string
+          invoice_number?: string
+          mobile_number?: string
+          order_id?: string
+          payment_status?: string
+          pincode?: string
+          product?: string
+          quantity?: number
+          status?: string
+        }
+        Relationships: []
+      }
+      quotes: {
+        Row: {
+          address: string
+          brand: string
+          city: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          mobile: string
+          pin_code: string
+          quantity: string
+          state: string
+        }
+        Insert: {
+          address: string
+          brand: string
+          city: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          mobile: string
+          pin_code: string
+          quantity: string
+          state: string
+        }
+        Update: {
+          address?: string
+          brand?: string
+          city?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          mobile?: string
+          pin_code?: string
+          quantity?: string
+          state?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

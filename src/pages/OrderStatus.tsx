@@ -4,70 +4,50 @@ import { Footer } from "@/components/layout/Footer";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 interface OrderDetails {
-  orderId: string;
+  order_id: string;
   status: "created" | "pending" | "shipped" | "success";
-  paymentStatus: "holding" | "completed";
+  payment_status: "holding" | "completed";
   date: string;
   product: string;
   quantity: number;
-  fullName: string;
-  mobileNumber: string;
-  invoiceNumber: string;
+  full_name: string;
+  mobile_number: string;
+  invoice_number: string;
   address: string;
   pincode: string;
 }
-
-// Demo data
-const demoOrders: Record<string, OrderDetails[]> = {
-  "9876543210": [
-    {
-      orderId: "ORD001",
-      status: "shipped",
-      paymentStatus: "completed",
-      date: "2024-02-20",
-      product: "Dalmia DSP PPC",
-      quantity: 1000,
-      fullName: "Rajesh Kumar",
-      mobileNumber: "9876543210",
-      invoiceNumber: "INV001",
-      address: "123, Main Street, Sector 5",
-      pincode: "800001"
-    },
-    {
-      orderId: "ORD002",
-      status: "pending",
-      paymentStatus: "holding",
-      date: "2024-02-22",
-      product: "ACC Cement",
-      quantity: 500,
-      fullName: "Amit Singh",
-      mobileNumber: "9876543210",
-      invoiceNumber: "INV002",
-      address: "456, Park Road, Sector 10",
-      pincode: "800002"
-    }
-  ]
-};
 
 const OrderStatus = () => {
   const [mobile, setMobile] = useState("");
   const [orders, setOrders] = useState<OrderDetails[]>([]);
   const [searched, setSearched] = useState(false);
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (mobile.length !== 10) {
       toast.error("Please enter a valid 10-digit mobile number");
       return;
     }
 
-    const foundOrders = demoOrders[mobile] || [];
-    setOrders(foundOrders);
-    setSearched(true);
+    try {
+      const { data, error } = await supabase
+        .from('orders')
+        .select('*')
+        .eq('mobile_number', mobile);
 
-    if (foundOrders.length === 0) {
-      toast.error("No orders found for this mobile number");
+      if (error) throw error;
+
+      setOrders(data || []);
+      setSearched(true);
+
+      if (!data || data.length === 0) {
+        toast.error("No orders found for this mobile number");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error("Failed to fetch orders. Please try again.");
     }
   };
 
@@ -123,17 +103,17 @@ const OrderStatus = () => {
               <div className="mt-6 space-y-6">
                 <h2 className="text-xl font-semibold">Your Orders</h2>
                 {orders.map((order) => (
-                  <div key={order.orderId} className="border rounded-lg p-6 space-y-4">
+                  <div key={order.order_id} className="border rounded-lg p-6 space-y-4">
                     <div className="flex flex-wrap gap-4 justify-between items-center">
                       <div>
-                        <span className="font-medium">Order ID: {order.orderId}</span>
+                        <span className="font-medium">Order ID: {order.order_id}</span>
                       </div>
                       <div className="flex gap-2">
                         <span className={`px-3 py-1 rounded-full text-sm ${getStatusColor(order.status)}`}>
                           {capitalizeFirstLetter(order.status)}
                         </span>
-                        <span className={`px-3 py-1 rounded-full text-sm ${getPaymentStatusColor(order.paymentStatus)}`}>
-                          Payment: {capitalizeFirstLetter(order.paymentStatus)}
+                        <span className={`px-3 py-1 rounded-full text-sm ${getPaymentStatusColor(order.payment_status)}`}>
+                          Payment: {capitalizeFirstLetter(order.payment_status)}
                         </span>
                       </div>
                     </div>
@@ -141,9 +121,9 @@ const OrderStatus = () => {
                     <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
                       <div>
                         <p className="font-medium mb-1">Customer Details</p>
-                        <p>Full Name: {order.fullName}</p>
-                        <p>Mobile: {order.mobileNumber}</p>
-                        <p>Invoice Number: {order.invoiceNumber}</p>
+                        <p>Full Name: {order.full_name}</p>
+                        <p>Mobile: {order.mobile_number}</p>
+                        <p>Invoice Number: {order.invoice_number}</p>
                       </div>
                       <div>
                         <p className="font-medium mb-1">Delivery Address</p>
@@ -152,7 +132,7 @@ const OrderStatus = () => {
                       </div>
                       <div>
                         <p className="font-medium mb-1">Order Details</p>
-                        <p>Date: {order.date}</p>
+                        <p>Date: {new Date(order.date).toLocaleDateString()}</p>
                         <p>Product: {order.product}</p>
                         <p>Quantity: {order.quantity} bags</p>
                       </div>
