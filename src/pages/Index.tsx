@@ -85,15 +85,17 @@ export const products = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen w-full">
       <Navigation />
-      <HeroSection />
-      <FeaturesSection />
-      <Banner />
-      <ProductsSection />
-      <AboutSection />
-      <ContactSection />
-      <CTASection />
+      <main className="flex-grow">
+        <HeroSection />
+        <FeaturesSection />
+        <Banner />
+        <ProductsSection />
+        <AboutSection />
+        <ContactSection />
+        <CTASection />
+      </main>
       <Footer />
     </div>
   );
