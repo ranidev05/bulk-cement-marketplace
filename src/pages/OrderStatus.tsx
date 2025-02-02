@@ -7,10 +7,9 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
 interface OrderDetails {
-  id: string;
   order_id: string;
-  status: string;
-  payment_status: string;
+  status: "created" | "pending" | "shipped" | "success";
+  payment_status: "holding" | "completed";
   date: string;
   product: string;
   quantity: number;
@@ -19,7 +18,6 @@ interface OrderDetails {
   invoice_number: string;
   address: string;
   pincode: string;
-  created_at: string;
 }
 
 const OrderStatus = () => {

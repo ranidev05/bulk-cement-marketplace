@@ -31,10 +31,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground min-h-screen;
-  }
-  #root {
-    @apply min-h-screen flex flex-col;
+    @apply bg-background text-foreground;
   }
 }
 
@@ -49,19 +46,4 @@
   100% {
     transform: translateX(-100%);
   }
-}
-
-/* Add full-width container styles */
-.container {
-  @apply w-full max-w-[1400px] mx-auto;
-}
-
-/* Add text alignment utilities */
-.text-content {
-  @apply text-left w-full;
-}
-
-/* Responsive padding */
-.section-padding {
-  @apply px-4 md:px-8;
 }
