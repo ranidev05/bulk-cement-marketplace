@@ -6,10 +6,13 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
+type OrderStatus = "created" | "pending" | "shipped" | "success";
+type PaymentStatus = "holding" | "completed";
+
 interface OrderDetails {
   order_id: string;
-  status: "created" | "pending" | "shipped" | "success";
-  payment_status: "holding" | "completed";
+  status: string; // Changed from OrderStatus to string to match Supabase
+  payment_status: string; // Changed from PaymentStatus to string to match Supabase
   date: string;
   product: string;
   quantity: number;
