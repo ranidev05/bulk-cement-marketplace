@@ -5,18 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-
-type OrderStatus = "created" | "pending" | "shipped" | "success";
-type PaymentStatus = "holding" | "completed";
 
 interface OrderDetails {
   order_id: string;
@@ -37,8 +27,6 @@ const OrderStatus = () => {
   const [searchValue, setSearchValue] = useState("");
   const [orders, setOrders] = useState<OrderDetails[]>([]);
   const [searched, setSearched] = useState(false);
-  const [statusFilter, setStatusFilter] = useState<OrderStatus | "all">("all");
-  const [paymentStatusFilter, setPaymentStatusFilter] = useState<PaymentStatus | "all">("all");
 
   const handleSearch = async () => {
     if (searchType === "mobile" && searchValue.length !== 10) {
@@ -61,14 +49,6 @@ const OrderStatus = () => {
         query = query.eq('mobile_number', searchValue);
       } else {
         query = query.eq('order_id', searchValue);
-      }
-
-      // Apply status filters
-      if (statusFilter !== "all") {
-        query = query.eq('status', statusFilter);
-      }
-      if (paymentStatusFilter !== "all") {
-        query = query.eq('payment_status', paymentStatusFilter);
       }
 
       const { data, error } = await query;
@@ -151,48 +131,6 @@ const OrderStatus = () => {
                     className="flex-1"
                   />
                   <Button onClick={handleSearch}>Search</Button>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="status" className="text-sm font-medium text-gray-700 mb-1">
-                    Order Status
-                  </Label>
-                  <Select
-                    value={statusFilter}
-                    onValueChange={(value) => setStatusFilter(value as OrderStatus | "all")}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Filter by status" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Statuses</SelectItem>
-                      <SelectItem value="created">Created</SelectItem>
-                      <SelectItem value="pending">Pending</SelectItem>
-                      <SelectItem value="shipped">Shipped</SelectItem>
-                      <SelectItem value="success">Success</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label htmlFor="paymentStatus" className="text-sm font-medium text-gray-700 mb-1">
-                    Payment Status
-                  </Label>
-                  <Select
-                    value={paymentStatusFilter}
-                    onValueChange={(value) => setPaymentStatusFilter(value as PaymentStatus | "all")}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Filter by payment status" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Payment Statuses</SelectItem>
-                      <SelectItem value="holding">Holding</SelectItem>
-                      <SelectItem value="completed">Completed</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
               </div>
             </div>

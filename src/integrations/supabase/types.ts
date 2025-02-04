@@ -126,6 +126,27 @@ export type Database = {
         }
         Relationships: []
       }
+      status_options: {
+        Row: {
+          created_at: string
+          id: string
+          type: string
+          value: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          type: string
+          value: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          type?: string
+          value?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
