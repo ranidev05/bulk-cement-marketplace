@@ -5,14 +5,23 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 type OrderStatus = "created" | "pending" | "shipped" | "success";
 type PaymentStatus = "holding" | "completed";
 
 interface OrderDetails {
   order_id: string;
-  status: string; // Changed from OrderStatus to string to match Supabase
-  payment_status: string; // Changed from PaymentStatus to string to match Supabase
+  status: string;
+  payment_status: string;
   date: string;
   product: string;
   quantity: number;
@@ -24,21 +33,45 @@ interface OrderDetails {
 }
 
 const OrderStatus = () => {
-  const [mobile, setMobile] = useState("");
+  const [searchType, setSearchType] = useState<"mobile" | "order">("mobile");
+  const [searchValue, setSearchValue] = useState("");
   const [orders, setOrders] = useState<OrderDetails[]>([]);
   const [searched, setSearched] = useState(false);
+  const [statusFilter, setStatusFilter] = useState<OrderStatus | "all">("all");
+  const [paymentStatusFilter, setPaymentStatusFilter] = useState<PaymentStatus | "all">("all");
 
   const handleSearch = async () => {
-    if (mobile.length !== 10) {
+    if (searchType === "mobile" && searchValue.length !== 10) {
       toast.error("Please enter a valid 10-digit mobile number");
       return;
     }
 
+    if (searchType === "order" && !searchValue.trim()) {
+      toast.error("Please enter a valid order ID");
+      return;
+    }
+
     try {
-      const { data, error } = await supabase
+      let query = supabase
         .from('orders')
-        .select('*')
-        .eq('mobile_number', mobile);
+        .select('*');
+
+      // Apply search filter
+      if (searchType === "mobile") {
+        query = query.eq('mobile_number', searchValue);
+      } else {
+        query = query.eq('order_id', searchValue);
+      }
+
+      // Apply status filters
+      if (statusFilter !== "all") {
+        query = query.eq('status', statusFilter);
+      }
+      if (paymentStatusFilter !== "all") {
+        query = query.eq('payment_status', paymentStatusFilter);
+      }
+
+      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -46,7 +79,7 @@ const OrderStatus = () => {
       setSearched(true);
 
       if (!data || data.length === 0) {
-        toast.error("No orders found for this mobile number");
+        toast.error(`No orders found for this ${searchType === "mobile" ? "mobile number" : "order ID"}`);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -84,21 +117,83 @@ const OrderStatus = () => {
         <h1 className="text-3xl font-bold text-center mb-8">Order Status</h1>
         
         <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">
-                Mobile Number
-              </label>
-              <div className="flex gap-2">
-                <Input
-                  id="mobile"
-                  type="tel"
-                  placeholder="Enter your mobile number"
-                  value={mobile}
-                  onChange={(e) => setMobile(e.target.value.replace(/\D/g, '').slice(0, 10))}
-                  className="flex-1"
-                />
-                <Button onClick={handleSearch}>Search</Button>
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <div>
+                <Label className="text-base font-medium mb-2 block">Search By</Label>
+                <RadioGroup
+                  defaultValue="mobile"
+                  onValueChange={(value) => setSearchType(value as "mobile" | "order")}
+                  className="flex gap-4"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="mobile" id="mobile" />
+                    <Label htmlFor="mobile">Mobile Number</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="order" id="order" />
+                    <Label htmlFor="order">Order ID</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              <div>
+                <Label htmlFor="searchValue" className="text-sm font-medium text-gray-700 mb-1">
+                  {searchType === "mobile" ? "Mobile Number" : "Order ID"}
+                </Label>
+                <div className="flex gap-2">
+                  <Input
+                    id="searchValue"
+                    type={searchType === "mobile" ? "tel" : "text"}
+                    placeholder={searchType === "mobile" ? "Enter your mobile number" : "Enter order ID"}
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(searchType === "mobile" ? e.target.value.replace(/\D/g, '').slice(0, 10) : e.target.value)}
+                    className="flex-1"
+                  />
+                  <Button onClick={handleSearch}>Search</Button>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="status" className="text-sm font-medium text-gray-700 mb-1">
+                    Order Status
+                  </Label>
+                  <Select
+                    value={statusFilter}
+                    onValueChange={(value) => setStatusFilter(value as OrderStatus | "all")}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Filter by status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Statuses</SelectItem>
+                      <SelectItem value="created">Created</SelectItem>
+                      <SelectItem value="pending">Pending</SelectItem>
+                      <SelectItem value="shipped">Shipped</SelectItem>
+                      <SelectItem value="success">Success</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <Label htmlFor="paymentStatus" className="text-sm font-medium text-gray-700 mb-1">
+                    Payment Status
+                  </Label>
+                  <Select
+                    value={paymentStatusFilter}
+                    onValueChange={(value) => setPaymentStatusFilter(value as PaymentStatus | "all")}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Filter by payment status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Payment Statuses</SelectItem>
+                      <SelectItem value="holding">Holding</SelectItem>
+                      <SelectItem value="completed">Completed</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
             </div>
 
@@ -147,7 +242,7 @@ const OrderStatus = () => {
 
             {searched && orders.length === 0 && (
               <div className="text-center text-gray-500 mt-4">
-                No orders found for this mobile number
+                No orders found for this {searchType === "mobile" ? "mobile number" : "order ID"}
               </div>
             )}
           </div>
