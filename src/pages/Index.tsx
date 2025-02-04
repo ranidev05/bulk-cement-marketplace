@@ -7,6 +7,9 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { ProductsSection } from "@/components/sections/ProductsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { CTASection } from "@/components/sections/CTASection";
+import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
+import { BrandsSection } from "@/components/sections/BrandsSection";
+import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 
 export const products = [
   {
@@ -88,6 +91,9 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <Navigation />
       <HeroCarousel />
+      <WhyChooseUsSection />
+      <BrandsSection />
+      <HowItWorksSection />
       <FeaturesSection />
       <Banner />
       <ProductsSection />
