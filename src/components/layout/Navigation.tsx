@@ -17,9 +17,8 @@ export const Navigation = () => {
     <nav className="bg-primary text-white py-4">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2">
-            <img src="/lovable-uploads/5969b8ca-b7b7-40fb-985d-621d97156a77.png" alt="Logo" className="h-10" />
-            <h1 className="text-2xl font-bold">CementKart</h1>
+          <Link to="/" className="flex items-center">
+            <img src="/lovable-uploads/5969b8ca-b7b7-40fb-985d-621d97156a77.png" alt="Logo" className="h-12" />
           </Link>
           
           {/* Mobile menu button */}

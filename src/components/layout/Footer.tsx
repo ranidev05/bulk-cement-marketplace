@@ -4,7 +4,7 @@ export const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-semibold mb-4">CementKart</h3>
+            <img src="/lovable-uploads/5969b8ca-b7b7-40fb-985d-621d97156a77.png" alt="Logo" className="h-12 mb-4" />
             <p className="text-sm">Your trusted partner for quality cement products.</p>
           </div>
           <div>
@@ -34,7 +34,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-white/20 text-center">
-          <p>&copy; 2024 CementKart. All rights reserved.</p>
+          <p>&copy; 2024 All rights reserved.</p>
         </div>
       </div>
     </footer>
