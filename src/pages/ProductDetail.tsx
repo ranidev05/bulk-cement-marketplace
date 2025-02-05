@@ -2,11 +2,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { products } from "./Index";
 import { X } from "lucide-react";
 import { Testimonial } from "@/components/Testimonial";
 import { CTASection } from "@/components/sections/CTASection";
 import { ProductCard } from "@/components/ProductCard";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Carousel,
   CarouselContent,
@@ -18,11 +19,39 @@ import {
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const product = products.find(p => p.name === decodeURIComponent(id || ""));
+
+  const { data: product, isLoading: isLoadingProduct } = useQuery({
+    queryKey: ['product', id],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('name', decodeURIComponent(id || ''))
+        .single();
+      
+      if (error) throw error;
+      return data;
+    }
+  });
+
+  const { data: bestSellingProducts } = useQuery({
+    queryKey: ['bestSellingProducts'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .limit(4);
+      
+      if (error) throw error;
+      return data;
+    }
+  });
+
+  if (isLoadingProduct) {
+    return <div>Loading...</div>;
+  }
 
   if (!product) return <div>Product not found</div>;
-
-  const bestSellingProducts = products.slice(0, 4);
 
   const reviews = [
     {
@@ -70,66 +99,33 @@ const ProductDetail = () => {
               <div className="space-y-6">
                 <div>
                   <h2 className="text-xl font-semibold mb-2">Description</h2>
-                  <p className="text-gray-600">
-                    Premium quality cement suitable for all construction needs. Manufactured under strict quality control.
-                  </p>
+                  <p className="text-gray-600">{product.description}</p>
                 </div>
                 
                 <div>
                   <h2 className="text-xl font-semibold mb-2">Features</h2>
                   <ul className="list-disc list-inside text-gray-600 space-y-2">
-                    <li>High early strength</li>
-                    <li>Superior workability</li>
-                    <li>Consistent quality</li>
-                    <li>Optimal setting time</li>
+                    {product.features.map((feature, index) => (
+                      <li key={index}>{feature}</li>
+                    ))}
                   </ul>
                 </div>
                 
                 <div>
                   <h2 className="text-xl font-semibold mb-2">Specifications</h2>
                   <div className="grid grid-cols-2 gap-4 text-gray-600">
-                    <div>
-                      <p className="font-medium">Brand</p>
-                      <p>{product.brand}</p>
-                    </div>
-                    <div>
-                      <p className="font-medium">Product Type</p>
-                      <p>PPC/OPC</p>
-                    </div>
-                    <div>
-                      <p className="font-medium">Package Size</p>
-                      <p>50 KG</p>
-                    </div>
-                    <div>
-                      <p className="font-medium">Grade</p>
-                      <p>43/53</p>
-                    </div>
-                    <div>
-                      <p className="font-medium">MOQ</p>
-                      <p>500</p>
-                    </div>
-                    <div>
-                      <p className="font-medium">Payment Terms</p>
-                      <p>Bank Transfer (RTGS, NEFT)</p>
-                    </div>
-                    <div>
-                      <p className="font-medium">Certified</p>
-                      <p>ISI Certified</p>
-                    </div>
-                    <div>
-                      <p className="font-medium">Application</p>
-                      <p>Construction Use</p>
-                    </div>
-                    <div>
-                      <p className="font-medium">Delivery Time</p>
-                      <p>2 - 3 Days</p>
-                    </div>
+                    {Object.entries(product.specifications).map(([key, value]) => (
+                      <div key={key}>
+                        <p className="font-medium">{key.charAt(0).toUpperCase() + key.slice(1)}</p>
+                        <p>{value as string}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
                 <div className="flex gap-4">
                   <Button 
-                    onClick={() => window.location.href = "tel:+919708976387"}
+                    onClick={() => window.location.href = "tel:8981950011"}
                     className="flex-1 h-12 rounded-full bg-[#333333] hover:bg-[#222222] text-white"
                   >
                     Call Now
@@ -146,23 +142,23 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        {/* Best Selling Products Section with Carousel */}
-        <section className="mt-16 relative px-12">
-          <h2 className="text-3xl font-bold text-center mb-8">Best Selling Products</h2>
-          <Carousel className="w-full">
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {bestSellingProducts.map((product) => (
-                <CarouselItem key={product.name} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4">
-                  <ProductCard {...product} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </section>
+        {bestSellingProducts && bestSellingProducts.length > 0 && (
+          <section className="mt-16 relative px-12">
+            <h2 className="text-3xl font-bold text-center mb-8">Best Selling Products</h2>
+            <Carousel className="w-full">
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {bestSellingProducts.map((product) => (
+                  <CarouselItem key={product.name} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4">
+                    <ProductCard {...product} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </section>
+        )}
 
-        {/* Best Reviews Section */}
         <section className="mt-16">
           <h2 className="text-3xl font-bold text-center mb-8">Customer Reviews</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -172,7 +168,6 @@ const ProductDetail = () => {
           </div>
         </section>
 
-        {/* CTA Banner */}
         <div className="mt-16">
           <CTASection />
         </div>

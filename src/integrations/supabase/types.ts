@@ -84,6 +84,45 @@ export type Database = {
         }
         Relationships: []
       }
+      products: {
+        Row: {
+          brand: string
+          created_at: string
+          description: string
+          features: string[]
+          id: string
+          image: string
+          name: string
+          price: number
+          specifications: Json
+          updated_at: string
+        }
+        Insert: {
+          brand: string
+          created_at?: string
+          description?: string
+          features?: string[]
+          id?: string
+          image: string
+          name: string
+          price: number
+          specifications?: Json
+          updated_at?: string
+        }
+        Update: {
+          brand?: string
+          created_at?: string
+          description?: string
+          features?: string[]
+          id?: string
+          image?: string
+          name?: string
+          price?: number
+          specifications?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
       quotes: {
         Row: {
           address: string
