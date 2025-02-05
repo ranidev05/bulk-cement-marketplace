@@ -14,7 +14,7 @@ export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-primary text-white py-4">
+    <nav className="bg-[#222222] text-white py-4">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center">
@@ -29,7 +29,7 @@ export const Navigation = () => {
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          <div className={`${isMenuOpen ? 'absolute top-16 left-0 right-0 bg-primary p-4 shadow-lg z-50' : 'hidden'} md:relative md:flex md:items-center md:space-x-8 md:top-0 md:shadow-none md:block`}>
+          <div className={`${isMenuOpen ? 'absolute top-16 left-0 right-0 bg-[#222222] p-4 shadow-lg z-50' : 'hidden'} md:relative md:flex md:items-center md:space-x-8 md:top-0 md:shadow-none md:block`}>
             <div className="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0">
               <Link to="/" className="hover:text-gray-200">Home</Link>
               <NavigationMenu>
@@ -59,18 +59,18 @@ export const Navigation = () => {
 
             <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-4 mt-4 md:mt-0">
               <a 
-                href="tel:18001218860" 
+                href="tel:8981950011" 
                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B5CF6] hover:bg-[#7C3AED] transition-colors w-full md:w-auto justify-center"
               >
                 <Phone className="h-4 w-4" />
-                <span className="text-sm">18001218860</span>
+                <span className="text-sm">8981950011</span>
               </a>
               <a 
-                href="mailto:info@cementkart.com" 
+                href="mailto:info@cementkarts.in" 
                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#F97316] hover:bg-[#EA580C] transition-colors w-full md:w-auto justify-center"
               >
                 <Mail className="h-4 w-4" />
-                <span className="text-sm">info@cementkart.com</span>
+                <span className="text-sm">info@cementkarts.in</span>
               </a>
             </div>
           </div>

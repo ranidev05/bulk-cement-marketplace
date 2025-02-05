@@ -16,7 +16,7 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">Phone</h4>
-                  <p className="text-gray-600">+91 9708976387</p>
+                  <p className="text-gray-600">8981950011</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -25,7 +25,7 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">Email</h4>
-                  <p className="text-gray-600">info@alphacements.com</p>
+                  <p className="text-gray-600">info@cementkarts.in</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -35,9 +35,9 @@ export const ContactSection = () => {
                 <div>
                   <h4 className="font-medium">Office Address</h4>
                   <p className="text-gray-600">
-                    123 Cement Street<br />
-                    Industrial Area, New Delhi<br />
-                    India - 110001
+                    5th Floor, Ashiana Tower, 508<br />
+                    Exibition Road, Salimpur Ahra<br />
+                    Dujra Diara, Patna (800001)
                   </p>
                 </div>
               </div>

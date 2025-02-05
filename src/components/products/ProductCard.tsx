@@ -14,7 +14,7 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
   const navigate = useNavigate();
   
   const handleCall = () => {
-    window.location.href = "tel:+919708976387";
+    window.location.href = "tel:8981950011";
   };
 
   const handleSubmit = (e: React.FormEvent) => {
