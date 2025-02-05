@@ -18,8 +18,8 @@ export const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png" alt="Logo" className="h-10" />
-            <h1 className="text-2xl font-bold">Alpha Cements</h1>
+            <img src="/lovable-uploads/5969b8ca-b7b7-40fb-985d-621d97156a77.png" alt="Logo" className="h-10" />
+            <h1 className="text-2xl font-bold">CementKart</h1>
           </Link>
           
           {/* Mobile menu button */}
@@ -67,11 +67,11 @@ export const Navigation = () => {
                 <span className="text-sm">18001218860</span>
               </a>
               <a 
-                href="mailto:info@alpha-cement.com" 
+                href="mailto:info@cementkart.com" 
                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#F97316] hover:bg-[#EA580C] transition-colors w-full md:w-auto justify-center"
               >
                 <Mail className="h-4 w-4" />
-                <span className="text-sm">info@alpha-cement.com</span>
+                <span className="text-sm">info@cementkart.com</span>
               </a>
             </div>
           </div>
