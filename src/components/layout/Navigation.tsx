@@ -1,10 +1,10 @@
+
 import { Phone, Mail, Menu, X } from "lucide-react";
 import { useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
@@ -40,12 +40,17 @@ export const Navigation = () => {
                       <ul className="grid w-[200px] gap-2 p-4 bg-white text-foreground">
                         {["Ultratech Cement", "Ambuja Cement", "Dalmia Cement", "ACC Cement", "JK Cement"].map((category) => (
                           <li key={category}>
-                            <Link
-                              to="/#products"
+                            <a
+                              href="#products"
                               className="block p-2 hover:bg-accent rounded-md"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+                                setIsMenuOpen(false);
+                              }}
                             >
                               {category}
-                            </Link>
+                            </a>
                           </li>
                         ))}
                       </ul>

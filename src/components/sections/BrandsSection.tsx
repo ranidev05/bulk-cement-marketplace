@@ -1,3 +1,6 @@
+
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Carousel,
   CarouselContent,
@@ -5,14 +8,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
-const brands = [
-  { name: "UltraTech", image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png" },
-  { name: "ACC", image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png" },
-  { name: "Ambuja", image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png" },
-  { name: "Shree Cement", image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png" },
-  { name: "JK Cement", image: "/lovable-uploads/eb7ac623-38fa-4cb3-ae59-d1dc47dbd81a.png" }
-];
 
 const cementTypes = [
   "OPC (Ordinary Portland Cement)",
@@ -22,6 +17,19 @@ const cementTypes = [
 ];
 
 export const BrandsSection = () => {
+  const { data: brands, isLoading } = useQuery({
+    queryKey: ['brand_logos'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('brand_logos')
+        .select('*')
+        .order('created_at', { ascending: true });
+      
+      if (error) throw error;
+      return data;
+    }
+  });
+
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -32,13 +40,15 @@ export const BrandsSection = () => {
           <div className="relative">
             <Carousel className="w-full">
               <CarouselContent>
-                {brands.map((brand, index) => (
-                  <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/5">
+                {isLoading ? (
+                  <div className="text-center w-full py-8">Loading brands...</div>
+                ) : brands?.map((brand) => (
+                  <CarouselItem key={brand.id} className="md:basis-1/3 lg:basis-1/5">
                     <div className="flex flex-col items-center">
                       <img
-                        src={brand.image}
+                        src={brand.logo_url}
                         alt={brand.name}
-                        className="w-32 h-32 object-contain mb-4 grayscale hover:grayscale-0 transition-all duration-300"
+                        className="w-[200px] h-[50px] object-contain mb-4 grayscale hover:grayscale-0 transition-all duration-300"
                       />
                       <p className="text-lg font-medium text-gray-800">{brand.name}</p>
                     </div>
