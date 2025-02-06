@@ -26,7 +26,7 @@ export const HeroCarousel = () => {
   });
 
   if (isLoading) {
-    return <div className="h-[400px] md:h-[600px] bg-gray-100 animate-pulse" />;
+    return <div className="h-[250px] md:h-[220px] bg-gray-100 animate-pulse" />;
   }
 
   return (
@@ -38,7 +38,7 @@ export const HeroCarousel = () => {
               <img 
                 src={banner.image_url} 
                 alt={banner.title}
-                className="w-full h-[250px] md:h-[400px] object-cover"
+                className="w-full h-[250px] md:h-[220px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r bg-black/40" />
               <div className="container mx-auto px-4 h-full flex items-center absolute inset-0">
