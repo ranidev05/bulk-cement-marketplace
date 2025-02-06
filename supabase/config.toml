@@ -1,4 +1,1 @@
 project_id = "rslkxfixkrxnxhwrjzdi"
-
-[functions.upload-image]
-verify_jwt = false
