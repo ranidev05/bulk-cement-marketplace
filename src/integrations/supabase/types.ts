@@ -69,6 +69,36 @@ export type Database = {
         }
         Relationships: []
       }
+      mobile_banners: {
+        Row: {
+          button_text: string
+          created_at: string
+          description: string
+          id: string
+          image_url: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          button_text: string
+          created_at?: string
+          description: string
+          id?: string
+          image_url: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          button_text?: string
+          created_at?: string
+          description?: string
+          id?: string
+          image_url?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       orders: {
         Row: {
           address: string
