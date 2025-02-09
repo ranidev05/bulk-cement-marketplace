@@ -1,50 +1,77 @@
+
 import { ContactForm } from "@/components/ContactForm";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, MapPin, Mail, Phone } from "lucide-react";
 
 export const ContactSection = () => {
   return (
-    <section id="contact" className="py-16 bg-white">
+    <section id="contact" className="py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Contact Us</h2>
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <div className="space-y-8">
-            <h3 className="text-2xl font-semibold mb-6">Get in Touch</h3>
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                  <Phone className="h-6 w-6 text-primary" />
+        <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+          {/* Left Column */}
+          <div className="p-8 lg:p-12">
+            <h2 className="text-4xl font-bold text-secondary mb-6">Let's get in touch</h2>
+            <p className="text-gray-600 mb-12 text-lg">
+              Whether you're working on a residential, commercial, or infrastructure project, Alpha Cement has you covered.
+            </p>
+            
+            <div className="space-y-6 mb-12">
+              <div className="flex items-start gap-4">
+                <div className="p-2">
+                  <MapPin className="h-6 w-6 text-secondary" />
                 </div>
-                <div>
-                  <h4 className="font-medium">Phone</h4>
-                  <p className="text-gray-600">8981950011</p>
-                </div>
+                <p className="text-gray-600">
+                  5th Floor, Ashiana Tower, 508<br />
+                  Exibition Road, Salimpur Ahra<br />
+                  Dujra Diara, Patna (800001)
+                </p>
               </div>
+              
               <div className="flex items-center gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                  <Mail className="h-6 w-6 text-primary" />
+                <div className="p-2">
+                  <Mail className="h-6 w-6 text-secondary" />
                 </div>
-                <div>
-                  <h4 className="font-medium">Email</h4>
-                  <p className="text-gray-600">info@cementkarts.in</p>
-                </div>
+                <a href="mailto:info@cementkarts.in" className="text-gray-600 hover:text-secondary">
+                  info@cementkarts.in
+                </a>
               </div>
+              
               <div className="flex items-center gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                  <MapPin className="h-6 w-6 text-primary" />
+                <div className="p-2">
+                  <Phone className="h-6 w-6 text-secondary" />
                 </div>
-                <div>
-                  <h4 className="font-medium">Office Address</h4>
-                  <p className="text-gray-600">
-                    5th Floor, Ashiana Tower, 508<br />
-                    Exibition Road, Salimpur Ahra<br />
-                    Dujra Diara, Patna (800001)
-                  </p>
-                </div>
+                <a href="tel:8981950011" className="text-gray-600 hover:text-secondary">
+                  8981950011
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Connect with us:</h3>
+              <div className="flex gap-4">
+                <a href="#" className="p-2 bg-gray-100 rounded-full hover:bg-secondary hover:text-white transition-colors">
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a href="#" className="p-2 bg-gray-100 rounded-full hover:bg-secondary hover:text-white transition-colors">
+                  <Twitter className="h-5 w-5" />
+                </a>
+                <a href="#" className="p-2 bg-gray-100 rounded-full hover:bg-secondary hover:text-white transition-colors">
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a href="#" className="p-2 bg-gray-100 rounded-full hover:bg-secondary hover:text-white transition-colors">
+                  <Linkedin className="h-5 w-5" />
+                </a>
               </div>
             </div>
           </div>
-          <div className="bg-gray-50 p-8 rounded-lg">
-            <ContactForm />
+
+          {/* Right Column */}
+          <div className="bg-secondary p-8 lg:p-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-foreground/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary-foreground/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold text-white mb-8">Contact us</h2>
+              <ContactForm />
+            </div>
           </div>
         </div>
       </div>

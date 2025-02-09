@@ -1,3 +1,4 @@
+
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -37,13 +38,14 @@ export const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-md">
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <Input 
-          placeholder="Full Name" 
+          placeholder="Name" 
           required 
           value={formData.fullName}
           onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+          className="border-white/20 bg-transparent text-white placeholder:text-white/70 focus-visible:ring-white"
         />
       </div>
       <div>
@@ -53,25 +55,33 @@ export const ContactForm = () => {
           required 
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          className="border-white/20 bg-transparent text-white placeholder:text-white/70 focus-visible:ring-white"
         />
       </div>
       <div>
         <Input 
-          placeholder="Phone Number" 
+          placeholder="Phone" 
           required 
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+          className="border-white/20 bg-transparent text-white placeholder:text-white/70 focus-visible:ring-white"
         />
       </div>
       <div>
         <Textarea 
-          placeholder="Your Message" 
+          placeholder="Message" 
           required 
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          className="border-white/20 bg-transparent text-white placeholder:text-white/70 focus-visible:ring-white min-h-[120px]"
         />
       </div>
-      <Button type="submit" className="w-full bg-secondary hover:bg-secondary/90">Send Message</Button>
+      <Button 
+        type="submit" 
+        className="w-full bg-white text-secondary hover:bg-white/90 transition-colors"
+      >
+        Send
+      </Button>
     </form>
   );
 };
