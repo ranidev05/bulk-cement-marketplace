@@ -1,5 +1,5 @@
 
-import { Users, Building2, Boxes, HandShake } from "lucide-react";
+import { Users, Building2, Boxes, Handshake } from "lucide-react";
 
 export const AboutSection = () => {
   return (
@@ -33,7 +33,7 @@ export const AboutSection = () => {
 
             <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
               <div className="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                <HandShake className="h-7 w-7 text-secondary" />
+                <Handshake className="h-7 w-7 text-secondary" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Bulk Discounts</h3>
               <p className="text-gray-600">
