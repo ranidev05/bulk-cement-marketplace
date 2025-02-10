@@ -1,3 +1,4 @@
+
 import { Button } from "../ui/button";
 import { QuoteDialog } from "../QuoteDialog";
 import { toast } from "sonner";
@@ -27,32 +28,37 @@ export const ProductCard = ({ name, price, image, brand }: ProductCardProps) => 
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
-      <img 
-        src={image} 
-        alt={name} 
-        className="w-full h-48 object-contain mb-4 cursor-pointer" 
-        onClick={handleViewDetail}
-      />
-      <div className="text-center flex-grow">
-        <h3 className="text-lg font-semibold mb-2 cursor-pointer" onClick={handleViewDetail}>{name}</h3>
-        <p className="text-primary font-bold mb-4">₹{price} / Bags</p>
-      </div>
-      <div className="w-full space-y-2">
-        <Button 
-          onClick={handleCall} 
-          className="w-full rounded-full bg-[#333333] hover:bg-[#222222] text-white"
-        >
-          Call Now
-        </Button>
-        <QuoteDialog onSubmit={handleSubmit} />
-        <Button
+    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
+      <div className="p-4">
+        <img 
+          src={image} 
+          alt={name} 
+          className="w-full h-48 object-contain mb-4 cursor-pointer hover:scale-105 transition-transform duration-300" 
           onClick={handleViewDetail}
-          variant="outline"
-          className="w-full rounded-full"
-        >
-          View Detail
-        </Button>
+        />
+        <div className="text-center">
+          <h3 className="text-lg font-semibold mb-2 cursor-pointer hover:text-secondary transition-colors" onClick={handleViewDetail}>
+            {name}
+          </h3>
+          <p className="text-secondary font-bold mb-4">₹{price} / Bags</p>
+          <p className="text-gray-600 text-sm mb-4">{brand}</p>
+        </div>
+        <div className="space-y-2">
+          <Button 
+            onClick={handleCall} 
+            className="w-full rounded-full bg-secondary hover:bg-secondary/90 text-white"
+          >
+            Call Now
+          </Button>
+          <QuoteDialog onSubmit={handleSubmit} />
+          <Button
+            onClick={handleViewDetail}
+            variant="outline"
+            className="w-full rounded-full border-secondary text-secondary hover:bg-secondary hover:text-white"
+          >
+            View Details
+          </Button>
+        </div>
       </div>
     </div>
   );

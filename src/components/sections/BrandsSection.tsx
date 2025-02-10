@@ -31,49 +31,68 @@ export const BrandsSection = () => {
   });
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Available Cement Brands & Types</h2>
-        
-        <div className="mb-12">
-          <h3 className="text-2xl font-semibold mb-6 text-center">Our Trusted Brands</h3>
-          <div className="relative">
-            <Carousel className="w-full">
-              <CarouselContent>
-                {isLoading ? (
-                  <div className="text-center w-full py-8">Loading brands...</div>
-                ) : brands?.map((brand) => (
-                  <CarouselItem key={brand.id} className="md:basis-1/3 lg:basis-1/5">
-                    <div className="flex flex-col items-center">
-                      <img
-                        src={brand.logo_url}
-                        alt={brand.name}
-                        className="w-[200px] h-[50px] object-contain mb-4 grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                      <p className="text-lg font-medium text-gray-800">{brand.name}</p>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="absolute top-1/2 -translate-y-1/2 flex justify-between w-full">
-                <CarouselPrevious className="relative -left-4" />
-                <CarouselNext className="relative -right-4" />
-              </div>
-            </Carousel>
+    <section className="py-24 bg-white relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-secondary/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-6">Available Cement Brands & Types</h2>
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+              We partner with leading cement manufacturers to provide you with the highest quality products for your construction needs.
+            </p>
           </div>
-        </div>
-
-        <div>
-          <h3 className="text-2xl font-semibold mb-6 text-center">Cement Types</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {cementTypes.map((type, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 p-4 rounded-lg text-center hover:bg-gray-100 transition-colors duration-300"
-              >
-                <p className="text-lg text-gray-800">{type}</p>
+          
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
+            <div className="p-8">
+              <h3 className="text-2xl font-semibold mb-8 text-center">Our Trusted Brands</h3>
+              <div className="relative">
+                <Carousel className="w-full">
+                  <CarouselContent>
+                    {isLoading ? (
+                      <div className="text-center w-full py-8">Loading brands...</div>
+                    ) : brands?.map((brand) => (
+                      <CarouselItem key={brand.id} className="md:basis-1/3 lg:basis-1/5">
+                        <div className="flex flex-col items-center p-4">
+                          <img
+                            src={brand.logo_url}
+                            alt={brand.name}
+                            className="w-[200px] h-[50px] object-contain mb-4 grayscale hover:grayscale-0 transition-all duration-300"
+                          />
+                          <p className="text-lg font-medium text-gray-800">{brand.name}</p>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <div className="absolute top-1/2 -translate-y-1/2 flex justify-between w-full">
+                    <CarouselPrevious className="relative -left-4" />
+                    <CarouselNext className="relative -right-4" />
+                  </div>
+                </Carousel>
               </div>
-            ))}
+            </div>
+          </div>
+
+          <div className="bg-secondary text-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="p-8 relative">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-foreground/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary-foreground/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+              <div className="relative z-10">
+                <h3 className="text-2xl font-semibold mb-8 text-center">Cement Types</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {cementTypes.map((type, index) => (
+                    <div
+                      key={index}
+                      className="bg-white/10 p-6 rounded-lg text-center hover:bg-white/20 transition-colors duration-300"
+                    >
+                      <p className="text-lg font-medium">{type}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
