@@ -1,3 +1,4 @@
+
 import { useParams, useNavigate } from "react-router-dom";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
@@ -5,9 +6,11 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { Testimonial } from "@/components/Testimonial";
 import { CTASection } from "@/components/sections/CTASection";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductCard } from "@/components/products/ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { QuoteDialog } from "@/components/QuoteDialog";
+import { toast } from "sonner";
 import {
   Carousel,
   CarouselContent,
@@ -75,6 +78,11 @@ const ProductDetail = () => {
     navigate(-1);
   };
 
+  const handleQuoteSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast.success("Quote request submitted successfully!");
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
@@ -130,12 +138,7 @@ const ProductDetail = () => {
                   >
                     Call Now
                   </Button>
-                  <Button 
-                    onClick={() => document.getElementById('quote-dialog')?.click()}
-                    className="flex-1 h-12 rounded-full bg-primary hover:bg-primary/90"
-                  >
-                    Get Quote
-                  </Button>
+                  <QuoteDialog onSubmit={handleQuoteSubmit} />
                 </div>
               </div>
             </div>
@@ -179,3 +182,4 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+
