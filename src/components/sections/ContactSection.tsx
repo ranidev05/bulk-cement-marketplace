@@ -11,7 +11,7 @@ export const ContactSection = () => {
           <div className="p-8 lg:p-12">
             <h2 className="text-4xl font-bold text-secondary mb-6">Let's get in touch</h2>
             <p className="text-gray-600 mb-12 text-lg">
-              Whether you're working on a residential, commercial, or infrastructure project, Alpha Cement has you covered.
+              Whether you're working on a residential, commercial, or infrastructure project, BulkCementOrders.in has you covered.
             </p>
             
             <div className="space-y-6 mb-12">
@@ -30,8 +30,8 @@ export const ContactSection = () => {
                 <div className="p-2">
                   <Mail className="h-6 w-6 text-secondary" />
                 </div>
-                <a href="mailto:info@cementkarts.in" className="text-gray-600 hover:text-secondary">
-                  info@cementkarts.in
+                <a href="mailto:info@bulkcementorders.in" className="text-gray-600 hover:text-secondary">
+                  info@bulkcementorders.in
                 </a>
               </div>
               

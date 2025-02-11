@@ -14,7 +14,7 @@ export const AboutSection = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-6">About Us</h2>
             <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              Welcome to CementKart, your trusted platform for ordering bulk cement online. We are dedicated to simplifying 
+              Welcome to BulkCementOrders.in, your trusted platform for ordering bulk cement online. We are dedicated to simplifying 
               the process of sourcing premium cement for construction projects across India.
             </p>
           </div>
