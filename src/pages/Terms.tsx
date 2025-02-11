@@ -1,3 +1,4 @@
+
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 
@@ -13,7 +14,7 @@ const Terms = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Agreement to Terms</h2>
             <p>
-              By accessing and using CementKart's website and services, you agree to be bound by these Terms and Conditions. If you disagree with any part of these terms, you may not access our services.
+              By accessing and using BulkCementOrders.in's website and services, you agree to be bound by these Terms and Conditions. If you disagree with any part of these terms, you may not access our services.
             </p>
           </section>
 
@@ -50,7 +51,7 @@ const Terms = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Limitation of Liability</h2>
             <p>
-              CementKart shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services.
+              BulkCementOrders.in shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services.
             </p>
           </section>
         </div>

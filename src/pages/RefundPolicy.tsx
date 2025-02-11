@@ -1,3 +1,4 @@
+
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 
@@ -47,9 +48,9 @@ const RefundPolicy = () => {
             <p>
               For any questions about our return and refund policy, please contact us at:
               <br />
-              Email: support@cementkart.com
+              Email: info@bulkcementorders.in
               <br />
-              Phone: +91 9708976387
+              Phone: +91 8981950011
             </p>
           </section>
         </div>

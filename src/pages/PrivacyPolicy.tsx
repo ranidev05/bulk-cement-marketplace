@@ -1,3 +1,4 @@
+
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 
@@ -13,7 +14,7 @@ const PrivacyPolicy = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
             <p>
-              CementKart ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
+              BulkCementOrders.in ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
             </p>
           </section>
 
@@ -49,7 +50,7 @@ const PrivacyPolicy = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Your Rights</h2>
             <p>
-              You have the right to access, correct, or delete your personal information. Contact us at info@cementkart.com for any privacy-related concerns.
+              You have the right to access, correct, or delete your personal information. Contact us at info@bulkcementorders.in for any privacy-related concerns.
             </p>
           </section>
         </div>
