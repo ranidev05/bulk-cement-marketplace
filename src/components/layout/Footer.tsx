@@ -7,7 +7,7 @@ export const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <img src="/lovable-uploads/5969b8ca-b7b7-40fb-985d-621d97156a77.png" alt="Logo" className="h-12 mb-4" />
+            <img src="/lovable-uploads/8e0b92e4-b3ab-4325-b6db-2a661412d9e9.png" alt="BulkCementOrders.in Logo" className="h-12 mb-4" />
             <p className="text-sm">Your trusted platform for bulk cement orders with top brands, best prices, and fast delivery.</p>
           </div>
           <div>
@@ -32,13 +32,13 @@ export const Footer = () => {
             <h3 className="text-xl font-semibold mb-4">Connect With Us</h3>
             <div className="space-y-2">
               <p>Phone: 8981950011</p>
-              <p>Email: info@cementkarts.in</p>
+              <p>Email: info@bulkcementorders.in</p>
               <p className="text-sm">Address: 5th Floor, Ashiana Tower, 508, Exibition Road, Salimpur Ahra, Dujra Diara, Patna (800001)</p>
             </div>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-white/20 text-center">
-          <p>&copy; 2024 All rights reserved.</p>
+          <p>&copy; 2024 BulkCementOrders.in. All rights reserved.</p>
         </div>
       </div>
     </footer>
