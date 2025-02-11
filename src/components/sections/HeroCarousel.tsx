@@ -1,3 +1,4 @@
+
 import { useQuery } from "@tanstack/react-query";
 import {
   Carousel,
@@ -44,7 +45,7 @@ export const HeroCarousel = () => {
 
   const banners = isMobile ? mobileBanners : desktopBanners;
   const isLoading = isMobile ? isMobileLoading : isDesktopLoading;
-  const height = isMobile ? "h-[250px]" : "h-[280px]";
+  const height = isMobile ? "h-[250px]" : "h-[600px]";
 
   if (isLoading) {
     return <div className={`${height} bg-gray-100 animate-pulse`} />;
